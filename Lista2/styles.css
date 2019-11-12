@@ -1,0 +1,246 @@
+:root{
+    --bestColor: #0f5566;
+    --back: #b9cbd7
+}
+
+html {
+    font-family: 'Montserrat',sans-serif;
+    margin-bottom: 0;
+    background: var(--back);
+}
+
+body {
+    padding-bottom: 0;
+    margin: 0px;
+}
+
+nav {
+    padding: 0px;
+    margin-inline: 20px;
+    background-color: var(--back);
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+nav ul {
+   list-style: none;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   background-color: var(--back);
+   flex-wrap: wrap;
+   padding-left: 0;
+}
+
+nav li a {
+    text-decoration: none;
+    color:white;
+    font-size: 130%;
+    padding: 0;
+    padding-top: 20px;
+}
+
+nav li h2 {
+    color: var(--bestColor);
+    padding:0px;
+    margin:0;
+    font-size: 100%; 
+}
+
+article {
+    margin:20px;
+    padding:20px;
+    background: white;
+    /* flex-wrap: wrap;  */
+}
+
+.about, .about2 {
+    font-size:10px; 
+    display: block;
+}
+
+article p {
+    font-size:14px;
+    text-align: justify;
+}
+
+.about div, .about p {
+    width: 100%;
+    font-size:14px;
+    text-align: justify;
+}
+
+.about2 div, .about2 p {
+    width: 100%;
+    font-size:14px;
+    text-align: justify;
+}
+
+img {
+    width: 100%;
+}
+
+b {
+    color: var(--bestColor);
+    font-size: 1em;
+}
+code, pre {
+    overflow-x: auto;
+}
+
+.contact p{
+    justify-content: center;
+    text-align: center;
+    line-height: 2em;
+}
+
+.contact a {
+    text-decoration: none;
+}
+
+.container{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.photo {
+    width:80%;
+}
+
+.photo img{
+    height: auto;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.1s ease-in-out;
+}
+
+.container p {
+    margin:5px;
+}
+
+.photo img:hover {
+    transform: scale(1.2);
+}
+
+.dropdown{
+    display:none;   
+}
+
+@media (min-width:1200px){
+    body {
+        margin: 40px;
+    }
+
+    img {
+        width: 50%; 
+        height: auto;
+        justify-content: flex-end;
+        padding: 20px;
+    }
+
+    .about {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .about2 {
+        display:flex;
+        /* flex-wrap: nowrap; */
+        flex-direction: row-reverse;
+    }
+
+    .about div, .about p {
+        width: 45vw;
+        font-size: 20px;
+        line-height: 1.8rem;
+
+    }
+
+    .about2 div, .about2 p {
+        width: 50vw;
+        font-size: 20px;
+        line-height: 1.8rem;
+    }
+    
+    article > p {
+        font-size:16px;
+    }
+
+    .container {
+        margin-top:0px;
+        justify-content: center;
+        display: inline-block;
+    }
+
+    
+    .photo {
+        display: inline-block;
+        width:40%;
+        margin:20px;
+        text-align: center;
+    }
+    .photo img {
+        width:100%;
+        margin-bottom: 0px;
+    }
+
+    nav li {
+        font-size: 150%;
+    }
+}
+
+@media (max-width:700px){
+    nav ul {
+        display: none;
+    }
+    nav {
+        /* justify-content: center; */
+        text-align: center;
+    }
+    
+/* Dropdown Button */
+    .dropbtn {
+        display: inline;
+        padding: 16px;
+        font-size: 20px;
+    }
+    
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        color: #0f5566;
+        padding-inline: 20px;
+        /* font-size: 120%; */
+    }
+    
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 160px;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        /* transform: translate(-50%, -50%) */
+    }
+    
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        background-color: white;
+        opacity: 80%;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }    
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {display: block;}
+
+}
+
+ 

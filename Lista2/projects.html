@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Piotr Kołodziejczyk</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="./styles.css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="./about.html">O mnie</a></li>
+                <li><a href="./interests.html">Zainteresowania</a></li>
+                <li><a href="./projects.html"><h2>Projekty</h2></a></li>
+                <li><a href="./contact.html">Kontakt</a></li>
+            </ul>
+            <div class="dropdown">
+                <p class="dropbtn">Projekty</button>
+                <div class="dropdown-content">
+                    <a href="./about.html">O mnie</a>
+                    <a href="./interests.html">Zainteresowania</a>
+                    <a href="./contact.html">Kontakt</a>
+                </div>
+            </div> 
+        </nav>
+        <article>
+            <p>
+               Jako że studiuję informatykę, mam w swoim dobytku kilka projektów programistycznych (choć nie tyle i takich, o jakich bym marzył)
+            </p>
+            <p><b>ChineeseCheckers</b> - gra dla maksymalnie 6 osób na planszy w kształcie gwiazdy sześcioramiennej. Wykonana w technologii Java, 
+                 architektura klient-serwer, JavaFX do interfejsu graficznego.</p>
+            <pre>
+                 <code> 
+        try {
+            Piece piece;
+            try {
+                System.out.println("Trying to move from " + moveOld[0] + ", " + moveOld[1] + " by player " + from);
+                piece = GameSingleton.getGame().getPlayerById(from).getArmy().getPieceByPosition(new PiecePosition(moveOld[0], moveOld[1]));
+            } catch (NoSuchPieceException e) {
+                e.printStackTrace();
+                return;
+            }
+            GameSingleton.getGame().getBoardMovementInterface().makeMove(piece, new PiecePosition(moveNew[0], moveNew[1]));
+
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("type", "make-move");
+            jsonObject.add("content", new JsonParser().parse(message).getAsJsonObject().get("content").getAsJsonArray());
+            jsonObject.addProperty("to", "all");
+
+            MessageQueueSingleton.getMessages().add(jsonObject.toString());
+        } catch (NoSuchPlayerException e) {
+            e.printStackTrace();
+        } catch (MoveNotAllowedException e) {
+            e.printStackTrace();
+        }</code>
+            </pre>
+
+            <p><b>MemeMate</b> - aplikacja mobilna do udostępniania memów i śmiesznych obrazków. Po założeniu konta i zaologowaniu użytkownik
+            może dodawać własny kontent, oceniać losowo wybrane memy oraz przeglądać listę najwyżej ocenionych. Aplikacja na androida, z użyciem 
+            narzędzia Firebase, praca grupowa. </p>
+            <pre>
+                <code>
+            private fun createUser(email: String, password: String, userName: String) {
+                db.document("Users/$userName").get().addOnSuccessListener {
+                    val user = it.toObject(UserModel::class.java)
+                    if (user == null) {
+                        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    val uid = FirebaseAuth.getInstance().uid ?: ""
+                                    val newUser = UserModel(uid, email, userName, ArrayList(), ArrayList(), ArrayList(), ArrayList())
+                                    FirebaseAuth.getInstance().currentUser!!.updateProfile(
+                                        UserProfileChangeRequest.Builder().setDisplayName(
+                                            userName
+                                        ).build()
+                                    )
+                                    db.collection("Users").document(FirebaseAuth.getInstance().currentUser!!.uid).set(newUser)
+                                        .addOnSuccessListener {
+                                            startApp()
+                                        }.addOnFailureListener { exception: java.lang.Exception ->
+                                            setError(exception.message + ".")
+                                        }
+                                }
+                            }.addOnFailureListener {
+                                if (it.message?.length!! > 70) {
+                                    setError(it.message!!.takeLastWhile { character -> character != '[' }.take(41) + ".")
+                                } else {
+                                    setError(it.message.toString())
+                                }
+                            }
+                    } else {
+                        setError("This username is taken.")
+                    }
+                }
+            }
+                </code>
+            </pre>
+                    
+        </article>
+    </body>
+</html> 
