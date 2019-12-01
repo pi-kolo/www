@@ -1,0 +1,10 @@
+canvas {
+    border: 1px solid red;
+    /* width: 50%; */
+}
+body {
+    display: flex;
+}
+/* img {
+    width: 400px;
+} */
