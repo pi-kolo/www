@@ -1,6 +1,11 @@
 let canvas = document.querySelector("#canvas")
 let ctx = canvas.getContext("2d");  
 let image = document.querySelector("img")
+let gallery = document.querySelectorAll(".gallery img")
+
+canvas.width = (window.innerWidth)*0.35
+canvas.height = canvas.width
+
 let canvasWidth = canvas.width
 let imgWidth = image.naturalHeight
 // console.log(image.width)
@@ -186,6 +191,21 @@ function hover(event){
 
 canvas.addEventListener('mousemove', e=>hover(e))
 
+function loadIMG(id){
+    let promise = new Promise((resolve, reject)=>{
+        console.log(id)
+        let element = document.querySelector(`#${id}`)
+        element.src = `photo${id}.jpg`
+        element.onload= ()=> {resolve(id)}
+        element.onerror = () => {reject(id)}
+    })
+}
+
+Promise.all([loadIMG(2),loadIMG(1),loadIMG(9), loadIMG(3), loadIMG(4), loadIMG(5), loadIMG(6), loadIMG(7), loadIMG(8)]).then(()=>{
+    console.log("alles gut")
+}).catch(()=>{
+    console.log("coś kaputt")
+})
 document.querySelectorAll(".gallery img").forEach(img => {
     img.addEventListener('click', e=>{
         image.src = img.src

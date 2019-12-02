@@ -1,11 +1,16 @@
 canvas {
-    border: 1px solid red;
-    /* width: 50%; */
+    /* border: 1px solid red; */
+    /* width: 30%; */
+}
+img { 
+    width: 35vw;
+    height: auto;
 }
 body {
-    display: flex;
+    text-align: center;
+    /* display: flex; */
 }
 .gallery img {
-    width: 50px;
+    width: 100px;
     height: auto;
 }
