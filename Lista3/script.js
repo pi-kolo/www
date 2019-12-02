@@ -194,7 +194,7 @@ canvas.addEventListener('mousemove', e=>hover(e))
 function loadIMG(id){
     let promise = new Promise((resolve, reject)=>{
         console.log(id)
-        let element = document.querySelector(`#${id}`)
+        let element = document.querySelector(`#im${id}`)
         element.src = `photo${id}.jpg`
         element.onload= ()=> {resolve(id)}
         element.onerror = () => {reject(id)}
