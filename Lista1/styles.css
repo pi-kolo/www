@@ -34,23 +34,16 @@ main {
 main > p {
     font-size: 100px;
     text-align: center;
-
-    /* margin-top: 10re m; */
-
 }
 
-.stickyNav {
-    /* position: sticky; */
-    top:0;
-    background-color: var(--back);
-
-}
 
 nav {
     padding: 0px;
     /* width: 100vw; */
-    margin: 0;
+    margin-inline: 20px;
     background-color: var(--back);
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 nav ul {
@@ -60,27 +53,28 @@ nav ul {
    align-items: center;
    background-color: var(--back);
    flex-wrap: wrap;
+   padding-left: 0;
 
 }
 
-nav ul li {
-
-}
 nav li a {
     text-decoration: none;
     color:white;
-    font-size: 150%;
-    padding: 20px;
+    font-size: 110%;
+    padding: 0;
+    padding-top: 20px;
+
 }
 
 nav li h2 {
     color: var(--bestColor);
     padding:0px;
     margin:0;
+    font-size: 100%;
 }
 
 section h2 {
-    font-size: 500%;
+    font-size: 200%;
     margin: 40px;
     color:white;
     padding: 20px;
@@ -89,14 +83,12 @@ article {
     margin:20px;
     padding:20px;
     background: white;
-    /* opacity: 0.7; */
-    /* display:flex; */
     flex-wrap: wrap;
     
 }
 
-article >p {
-    font-size:20px;
+article > p {
+    font-size:16px;
 }
 .about {
     display: flex;
@@ -126,14 +118,12 @@ img {
     width: 50%; 
     height: auto;
     justify-content: flex-end;
-    flex-wrap: wrap;
-    flex-grow: 2;
     padding: 20px;
 }
 
 b {
     color: var(--bestColor);
-    font-size: 2em;
+    font-size: 1em;
 }
 code, pre {
     overflow-x: auto;
@@ -171,32 +161,55 @@ code, pre {
 }
 
 .photo img:hover {
-    -webkit-transform: scale(1.3);
-    -ms-transform: scale(1.3);
-    transform: scale(1.3);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 
 @media only screen and (max-width:1080px){
     img {
         width: 90%;
-        float: none;
     }
     .about, .about2 {
-        text-align: center;
+        /* text-align: justify; */
+        font-size:10px; 
         display: block;
         /* align-content: center; */
     }
     .about div, .about p {
         width: 100%;
-        /* text-align: justify; */
+        font-size:14px;
+        text-align: justify;
     }
     .about2 div, .about2 p {
         width: 100%;
+        font-size:14px;
+        text-align: justify;
+    }
+    article p {
+        font-size:14px;
+        text-align: justify;
+    }
+    .container{
+        justify-content: center;
         text-align: center;
+        display: inline-block;
+        padding: 0;
     }
     .photo {
-        width:70%;
+        width:80%;
+        text-align: center;
+        justify-content: center;
     }
+    .photo img{
+        /* width:100%; */
+        height: auto;
+        /* text-align: center; */
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+    
 
 }

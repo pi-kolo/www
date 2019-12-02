@@ -5,6 +5,7 @@ canvas {
 body {
     display: flex;
 }
-/* img {
-    width: 400px;
-} */
+.gallery img {
+    width: 50px;
+    height: auto;
+}

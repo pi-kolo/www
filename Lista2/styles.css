@@ -129,6 +129,7 @@ code, pre {
     display:none;   
 }
 
+
 @media (min-width:1200px){
     body {
         margin: 40px;
@@ -189,9 +190,20 @@ code, pre {
     nav li {
         font-size: 150%;
     }
+    .project{
+        margin: 20px;
+    }
+    .about p {
+        font-size: 12px;
+        width:40vw;
+    }
+    .about div {
+        font-size: 12px;
+        width: 40vw;
+    }
 }
 
-@media (max-width:700px){
+@media (max-width:500px){
     nav ul {
         display: none;
     }
