@@ -3,12 +3,18 @@ let ctx = canvas.getContext("2d");
 let image = document.querySelector("img")
 let gallery = document.querySelectorAll(".gallery img")
 
-if(screen.orientation.type=="landscape-primary"){
-    canvas.width = (screen.width)*0.35
+if(window.innerHeight>window.innerWidth){
+    canvas.width = (window.innerWidth)*0.8
+} else {
+    canvas.width = (window.innerWidth)*0.35
 }
-if(screen.orientation.type=="portrait-primary"){
-    canvas.width = (screen.width)*0.9
-}
+
+// if(screen.orientation.type=="landscape-primary"){
+//     canvas.width = (screen.width)*0.35
+// }
+// if(screen.orientation.type=="portrait-primary"){
+//     canvas.width = (screen.width)*0.9
+// }
 
 canvas.height = canvas.width
 
