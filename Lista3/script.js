@@ -9,7 +9,7 @@ canvas.height = canvas.width
 let canvasWidth = canvas.width
 let imgWidth = image.naturalHeight
 // console.log(image.width)
-let SIZE = 5
+let SIZE = 4
 
 let squareWidth = canvasWidth/SIZE
 
@@ -28,8 +28,11 @@ class Square {
 // mapa id squarea na kawałek obrazka? (dwie wspolrzedne wystarcza ) 
 
 function init(){
+    console.log(`SIZE: ${SIZE}`)
+    ctx.clearRect(0,0,canvasWidth, canvasWidth)
     squares = [[]]
     idToImageSquare.clear()
+    console.log(idToImageSquare)
     for(let i=0; i<SIZE; i++ ){
         squares[i] = []
         for(let j=0; j<SIZE; j++){
@@ -38,6 +41,7 @@ function init(){
             idToImageSquare.set(SIZE*i+j, SIZE*i+j)
         }
     }
+    console.log(idToImageSquare)
     shuffle()
     imgWidth = image.naturalHeight
     let last = getBlank()
@@ -60,15 +64,13 @@ function init(){
 }
 
 
-
-
 function getSquare(event){
     let x = event.offsetX
     let y = event.offsetY
 
     let i = Math.floor(x/squareWidth)
     let j = Math.floor(y/squareWidth)
-    // console.log(idToImageSquare.get(squares[j][i].id))
+    console.log(idToImageSquare.get(squares[j][i].id))
     return (squares[j][i].id)
 }
 
@@ -89,10 +91,10 @@ function getNeighbours(id){
         neighbours.push(id-1)
     }
     if (Math.floor((id+SIZE))<SIZE*SIZE) {
-        neighbours.push(id+SIZE)
+        neighbours.push((id+SIZE))
     }
     if (Math.floor((id-SIZE))>=0) {
-        neighbours.push(id-SIZE)
+        neighbours.push((id-SIZE))
     }
     return neighbours
 }
@@ -130,6 +132,9 @@ function doMove(event){
 
         ctx.fillRect(getXfromId(id), getYfromId(id), squareWidth,squareWidth)
     }
+    if(hasWon()){
+        alert("GRATKI!")
+    }
 }
 
 canvas.addEventListener('click', e=>doMove(e))
@@ -137,11 +142,13 @@ canvas.addEventListener('click', e=>doMove(e))
 function shuffle(){
     let neighbours, toSwapId, atSwap
     let blank = SIZE*SIZE-1
-
+    console.log(`SIZEe: ${SIZE}`)
     for(let i=0; i<3**SIZE; i++){
         neighbours = getNeighbours(blank)
+        // console.log(neighbours)
         toSwapId = neighbours[Math.floor(Math.random()*(neighbours.length))]
         atSwap = idToImageSquare.get(toSwapId)
+        // console.log(`blank: ${blank}, toswapid:${toSwapId}`)
         idToImageSquare.set(blank, atSwap)
         idToImageSquare.set(toSwapId, SIZE*SIZE-1)
         blank = toSwapId
@@ -162,6 +169,7 @@ function getBlank(){
 image.addEventListener('load', e => {
     init()
   });
+
 let hoverId
 function hover(event){
     let square = getSquare(event)
@@ -196,19 +204,34 @@ function loadIMG(id){
         console.log(id)
         let element = document.querySelector(`#im${id}`)
         element.src = `photo${id}.jpg`
-        element.onload= ()=> {resolve(id)}
-        element.onerror = () => {reject(id)}
+        element.onload= ()=> {resolve()}
+        element.onerror = () => {reject()}
     })
 }
 
 Promise.all([loadIMG(2),loadIMG(1),loadIMG(9), loadIMG(3), loadIMG(4), loadIMG(5), loadIMG(6), loadIMG(7), loadIMG(8)]).then(()=>{
-    console.log("alles gut")
+    console.log(`alles gut`)
 }).catch(()=>{
     console.log("coś kaputt")
 })
 document.querySelectorAll(".gallery img").forEach(img => {
     img.addEventListener('click', e=>{
         image.src = img.src
+        imgWidth = img.naturalWidth
+        SIZE = parseInt(document.querySelector("input").value)
+        squareWidth=canvasWidth/SIZE
         init()
 })})
-   
+
+
+function hasWon(){
+    // console.log(idToImageSquare)
+    let won = true
+    for(let i=0; i<SIZE*SIZE-1; i++){
+        console.log(`${i} -> ${idToImageSquare.get(i)}`)
+        if(idToImageSquare.get(i)!=i){
+            return false
+        }
+    }
+    return won
+}

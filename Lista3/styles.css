@@ -1,6 +1,7 @@
 canvas {
     /* border: 1px solid red; */
-    /* width: 30%; */
+    /* width: 35%;
+    height: auto; */
 }
 img { 
     width: 35vw;
@@ -13,4 +14,7 @@ body {
 .gallery img {
     width: 100px;
     height: auto;
+}
+input {
+    width:30px;
 }
