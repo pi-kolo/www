@@ -1,12 +1,15 @@
-canvas {
-    /* border: 1px solid red; */
-    /* width: 35%;
-    height: auto; */
-}
+
 img { 
     width: 35vw;
     height: auto;
 }
+@media (orientation:portrait){
+    img {
+        width:80vw;
+        height:auto;
+    }
+}
+
 body {
     text-align: center;
     /* display: flex; */

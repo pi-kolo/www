@@ -3,7 +3,13 @@ let ctx = canvas.getContext("2d");
 let image = document.querySelector("img")
 let gallery = document.querySelectorAll(".gallery img")
 
-canvas.width = (window.innerWidth)*0.35
+if(screen.orientation.type=="landscape-primary"){
+    canvas.width = (screen.width)*0.35
+}
+if(screen.orientation.type=="portrait-primary"){
+    canvas.width = (screen.width)*0.9
+}
+
 canvas.height = canvas.width
 
 let canvasWidth = canvas.width
