@@ -1,0 +1,20 @@
+article {
+    width:80%;
+    padding:20px;
+    margin-inline:auto;
+    margin-block: 20px;
+
+}
+body {
+    /* display: flex;
+    flex-wrap: wrap; */
+    /* text-align: center; */
+}
+
+html {
+    background: #9ec7b9;
+    /* color:white; */
+}
+article{
+    background: rgba(255, 255, 255, 0.822);
+}
