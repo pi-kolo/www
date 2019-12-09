@@ -88,21 +88,22 @@
             $$
                 \left(\frac{a}{n}\right) = \left(\frac{2^e}{n}\right)\left(\frac{a_1}{n}\right) = \left(\frac{2}{n}\right)^e\left(\frac{n\textrm{ mod }a_1}{a_1}\right)(-1)^{\frac{(a_1-1)(n-1)}{4}} 
             $$
-            <b>Algorytm obliczania symbolu Jacobiego i Legendre'a</b> dla nieparzystej liczby całkowitej $n\geq3$ oraz całlkowitego $0\leq a < n $ 
-            <br>
-            $\texttt{JACOBI}(a,n)$
-            <ol type="a">
-                <li> $\texttt{If } a=0 \texttt{ then return }$ 0</li>
-                <li> $\texttt{If } a=1 \texttt{ then return }$ 1</li>
-                <li> $\texttt{Write } a=2^ea_1, \texttt{ gdzie } a_1 \texttt{ nieparzyste} $ </li>
-                <li> $\texttt{If } e \texttt{ parzyste set } s \gets 1 $<br>
-                    $\texttt{Otherwise set } s \gets 1 \texttt{ if } n \equiv 1  \textrm{or 7 (mod 8),}$ <br>
-                    $ \texttt{or set } s \gets -1 \texttt{ if } n\equiv3 \textrm{ or 5(mod 8)}$ </li>
-                <li>$ \texttt{If } n\equiv3\textrm{(mod 4)} \texttt{and} a_1 \equiv 3 \textrm{(mod 4)} \texttt{ then set } s\gets -s $</li>
-                <li>$ \texttt{Set } n_1 \gets n \textrm{mod} a_1$</li>
-                <li>$ \texttt{If } a_1 = 1 \texttt{ then return s}$ <br>
-                    $ \texttt{Otherwise return } s\cdot \texttt{JACOBI}(n_1, a_1)$</li>
-            </ol>
+            <b>Algorytm obliczania symbolu Jacobiego i Legendre'a</b> dla nieparzystej liczby całkowitej $n\geq3$ oraz całlkowitego $0\leq a < n :$ 
+            <p>
+                $\texttt{JACOBI}(a,n)$:
+                <ol type="a">
+                    <li> $\texttt{If } a=0 \texttt{ then return } 0 $ </li>
+                    <li> $\texttt{If } a=1 \texttt{ then return } 1$ </li>
+                    <li> $\texttt{Write } a=2^ea_1, \texttt{ gdzie } a_1 \texttt{ nieparzyste} $ </li>
+                    <li> $\texttt{If } e \texttt{ parzyste set } s \gets 1 $<br>
+                        $\texttt{Otherwise set } s \gets 1 \texttt{ if } n \equiv 1  \textrm{ or 7 (mod 8),}$ <br>
+                        $ \texttt{or set } s \gets -1 \texttt{ if } n\equiv3 \textrm{ or 5 (mod 8)}$ </li>
+                    <li>$ \texttt{If } n\equiv3\textrm{ (mod 4) } \texttt{ and } a_1 \equiv 3 \textrm{ (mod 4)} \texttt{ then set } s\gets -s $</li>
+                    <li>$ \texttt{Set } n_1 \gets n \textrm{ mod } a_1$</li>
+                    <li>$ \texttt{If } a_1 = 1 \texttt{ then return s}$ <br>
+                        $ \texttt{Otherwise return } s\cdot \texttt{JACOBI}(n_1, a_1)$</li>
+                </ol>
+            </p>
         </article>
         <article>
             <h2>Schemat progowy $(t,n)$ dzielenia sekretu Shamira</h2>
