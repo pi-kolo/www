@@ -1,28 +1,33 @@
+html {
+    background: #527a63;
+    font-family: Georgia, 'Times New Roman', Times, serif   ;
+    /* color:white; */
+}
+h1 {
+    color:white;
+    text-align: center;
+    font-size: 40px;
+    letter-spacing: 5px;
+}
 article {
     width:80%;
     padding:20px;
     margin-inline:auto;
     margin-block: 20px;
+    background: rgba(255, 255, 255, 0.74);
 
 }
-body {
-    /* display: flex;
-    flex-wrap: wrap; */
-    /* text-align: center; */
-}
 
-html {
-    background: #9ec7b9;
-    font-family: Georgia, 'Times New Roman', Times, serif   ;
-    /* color:white; */
-}
-article{
-    background: rgba(255, 255, 255, 0.822);
-}
 li {
     padding-block: 2px;
+    padding-inline: 15px;
 }
-
+nav{
+    position: sticky;
+    top:0;
+    background: #527a63;
+    padding:20px;
+}
 nav ul {
     /* background: rgba(255, 255, 255, 0.589); */
     list-style: none;
@@ -32,6 +37,7 @@ nav ul {
 nav ul li {
     margin :auto;
 }
+
 pre {
     font-size: large;
     line-height: 35px;
@@ -43,4 +49,9 @@ nav ul li a {
     color:#FFF;
     font-weight: bold;
     padding:20px;
+}
+
+#example {
+    letter-spacing: 2px;
+    font-weight: bolder;
 }

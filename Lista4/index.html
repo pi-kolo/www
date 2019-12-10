@@ -19,6 +19,7 @@
             }
             };
         </script>
+        <h1>Sekrety Kryptografii</h1>
         <nav>
             <ul>
                 <li><a href="#a1">Schemat ZłotaWoda</a></li>
@@ -132,7 +133,7 @@ for i from 1 to t do
         <article id="a4">
             <h2>Schemat progowy $(t,n)$ dzielenia sekretu Shamira</h2>
             <b> Cel:</b> Zaufana Trzecia Strona $T$ ma sekret $S\geq0$, który chce podzielić pomiędzy 
-            $n$ uczestników tak, aby dowolnych $t$ spośród nich mogło sekret odtworzyć.
+            $n$ uczestników tak, aby dowolnych $t$ spośród nich mogło sekret odtworzyć.<br>
             <b> Faza inicjalizacji:</b>
             <ol>
                 <li> $T$ wybiera liczbę pierwszą $p>max(S,n)$ i definiuje $a_0=S$</li>
@@ -143,10 +144,47 @@ for i from 1 to t do
                     $$
                 </li>
                 <li>Dla $1\leq i\leq n$ Zaufana Strona Trzecia $T$ wybiera losowo $x_i \in \mathbb{Z}_p$, oblicza:
-                    $S_i=f(x_i)$ mod $p$ i bezpiecznie przekazuje parę $(x_i, S_i)$ użytkownikowi $P_i$.                </li>
+                    $S_i=f(x_i)$ mod $p$ i bezpiecznie przekazuje parę $(x_i, S_i)$ użytkownikowi $P_i$.                
+                </li>
             </ol>
             <b>Faza łączenia udziałów w sekret:</b> Dowolna grupa $t$ lub więcej użytkowników łączy swoje udziały
             - $t$ różnych punktów $(x_i, S_i)$ wielomianu $f$ i dzięki interpolacji Lagrange'a odzyskuje sekrest $S = a_0 = f(0)$.
+            <br>
+            <br>
+            <a id="example">Przykład</a>
+            <div>
+                    <h2>Przykład sekretu Shamira</h2>
+                    <b>Inicjalizacja: </b>
+                    Niech sekret $S = 1234$.
+                    Dzielimy go między 6 osób ($n=6$), z czego 3 będą mogły go zrekonstruować ($t=3$).
+                    Losowo wybieramy $t-1=2$ liczb: $166$ i $94$.
+                    Wygenerowany wielomian jest zatem postaci:
+                    $$
+                    f(x) = 1234 + 166x +94x^2
+                    $$
+                
+                    Wybieramy 6 punktów z wielomianu:
+                    $(1,1494), (2,1942), (3,2578), (4,3402), (5,4414), (6, 5614)$
+                    <br>
+                    <br>
+                    <b>Łączenie udziałów: </b>
+                    Z wcześniej wygenerowanych wybierzmy $t$ punktów, np:
+                    $(2,1942), (4,3402), (5,4414)$.
+                
+                    Korzystamy ze wzoru:
+                    $$
+                    S = 1942\cdot \frac{4}{4-2} \cdot \frac{5}{5-2}
+                        + 3402\cdot \frac{5}{5-4} \cdot \frac{2}{2-4}
+                        + 4414\cdot \frac{2}{2-5} \cdot \frac{4}{4-5}
+                        =
+                    $$
+                    $$
+                        = 1942 \cdot \frac{10}{3} + 3402 \cdot (-5) + 4414 \cdot \frac{8}{3} =
+                    $$
+                    $$
+                    = 1234
+                    $$
+            </div>
         </article>
         <article id="a5">
             <h2>Interpolacja Lagrange'a</h2>
@@ -163,5 +201,19 @@ for i from 1 to t do
                 f(x) = \sum_{i-1}^t\left(y_i\prod_{1\leq j \leq t, j\neq i} \frac{x_j}{x_j-x_i}\right) \textrm{mod }p
             $$
         </article>
+            
+        <script>
+
+            const ex = document.querySelector("#example")
+            const divEx = document.querySelector("div")
+            divEx.style.display="none"
+            ex.addEventListener('click', (event)=>{
+            if(divEx.style.display==="none"){
+                divEx.style.display="block"
+            } else {
+                divEx.style.display="none"
+            }
+})
+        </script>
     </body>
 </html>
