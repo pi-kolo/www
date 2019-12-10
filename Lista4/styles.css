@@ -1,10 +1,9 @@
 html {
-    background: #527a63;
+    background: #b9cbd7;
     font-family: Georgia, 'Times New Roman', Times, serif   ;
-    /* color:white; */
 }
 h1 {
-    color:white;
+    color:#0f5566;
     text-align: center;
     font-size: 40px;
     letter-spacing: 5px;
@@ -17,7 +16,9 @@ article {
     background: rgba(255, 255, 255, 0.74);
 
 }
-
+b, h2, h3 {
+    color: #0f5566
+}
 li {
     padding-block: 2px;
     padding-inline: 15px;
@@ -25,7 +26,7 @@ li {
 nav{
     position: sticky;
     top:0;
-    background: #527a63;
+    background: #b9cbd7;
     padding:20px;
 }
 nav ul {
@@ -54,4 +55,5 @@ nav ul li a {
 #example {
     letter-spacing: 2px;
     font-weight: bolder;
+    color:#0f5566;
 }
